@@ -53,8 +53,8 @@ def añadir_servicios(request):
         img_io.seek(0)
         img_io2.seek(0)
         
-        img_file = InMemoryUploadedFile(img_io, 'ImageField', f'{img_prev_name_base}.webp', 'image/webp',sys.getsizeof(img_io), None)
-        img_file2 = InMemoryUploadedFile(img_io2, 'ImageField', f'{img_comp_name_base}.webp', 'image/webp',sys.getsizeof(img_io2), None)
+        img_file = InMemoryUploadedFile(img_io, 'ImageField', f'{img_prev_name_base}.webp', 'image/webp',img_io.tell(), None)
+        img_file2 = InMemoryUploadedFile(img_io2, 'ImageField', f'{img_comp_name_base}.webp', 'image/webp',img_io.tell(), None)
         
         servicios.img_prev = img_file
         servicios.img_comp = img_file2
@@ -100,8 +100,8 @@ def añadir_productos(request):
         img_io.seek(0)
         img_io2.seek(0)
         
-        img_file = InMemoryUploadedFile(img_io, 'ImageField', f'{img_prev_name_base}.webp', 'image/webp',sys.getsizeof(img_io), None)
-        img_file2 = InMemoryUploadedFile(img_io2, 'ImageField', f'{img_comp_name_base}.webp', 'image/webp',sys.getsizeof(img_io2), None)
+        img_file = InMemoryUploadedFile(img_io, 'ImageField', f'{img_prev_name_base}.webp', 'image/webp',img_io.tell(), None)
+        img_file2 = InMemoryUploadedFile(img_io2, 'ImageField', f'{img_comp_name_base}.webp', 'image/webp',img_io.tell(), None)
         
         producto.img_prev = img_file
         producto.img_comp = img_file2
