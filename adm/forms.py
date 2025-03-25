@@ -46,11 +46,11 @@ class usuarios(UserCreationForm):
       }
       
       widgets = {
-        'first_name':forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md   ml-4 w-80'}, placeholder='ejemplo: weib'),
-        'last_name': forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-80'}, placeholder='ejemplo: weib'),
-        'email': forms.EmailInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-64'},placeholder='ejemplo: weib@gmail.com'),
-        'telefono': forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-64'},placeholder='ejemplo: 414-000000'),
-        'username':forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-64'},placeholder='ejemplo: weibUsername'),
+        'first_name':forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-80', 'placeholder':'ejemplo: weib'}),
+        'last_name': forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-80', 'placeholder':'ejemplo: weib'}),
+        'email': forms.EmailInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-64', 'placeholder':'ejemplo: weib@gmail.com'}),
+        'telefono': forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-64','placeholder':'ejemplo: 414-000000'}),
+        'username':forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-4 w-64','placeholder':'ejemplo: weibUsername'}),
       }
       
       
@@ -98,7 +98,7 @@ class editar_users(forms.ModelForm):
 
       
     widgets = {
-      'first_name':forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md   ml-2'}),
+      'first_name':forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-2'}),
       'last_name': forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-2'}),
       'email': forms.EmailInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md ml-2'}),
       'telefono': forms.TextInput(attrs={'class':'shadow duration-200 hover:scale-110 focus:shadow-md rounded-md mr-8'}),
