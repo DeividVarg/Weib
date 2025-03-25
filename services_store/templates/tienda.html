@@ -5,7 +5,7 @@
 </head>
 <body>
   {%block content%}
-  <div class="items-center">
+  <div class="felx-col items-center">
     <!-- tarjetas -->
     {%for i in tienda%}
 
@@ -21,7 +21,7 @@
         <img
           src="{{i.img_prev.url}}"
           alt=""
-          class="flex justify-center bg-[#4baa38] rounded-md w-64 h-52 py-1.5 px-1.5 mt-4 mb-2"
+          class="self-center bg-[#4baa38] rounded-md w-64 h-52 py-1.5 px-1.5 mt-4 mb-2"
         />
 
         <a
