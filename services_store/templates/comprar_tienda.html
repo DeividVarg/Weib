@@ -7,33 +7,14 @@
 <body>
   {%block content%}
 
-  <div class="justify-between flex px-10 mt-10 min-h-screen">
-    <div class="flex justify-start">
-      <div class="flex items-center ml-28 -mt-20">
-        <div class="relative w-96 mx-auto h-96">
-          <div
-            id="imageCarousel"
-            class="flex overflow-hidden relative h-70 w-96 rounded-lg shadow-lg items-center"
-          >
-            <div
-              class="flex items-center transition-transform duration-500 ease-in-out"
-              style="transform: translateX(0%)"
-            >
-              <img
-                src="{{tienda.img_prev.url}}"
-                class="w-96 h-96 flex-shrink-0"
-                alt="Imagen 1"
-              />
-              <img
-                src="{{tienda.img_comp.url}}"
-                class="w-96 h-96 flex-shrink-0"
-                alt="Imagen 2"
-              />
-            </div>
-          </div>
+  <div class="relative w-96 mx-auto h-96">
+    <div id="imageCarousel" class="flex overflow-hidden relative h-70 w-96 rounded-lg shadow-lg">
+        <div class="flex items-center transition-transform duration-1000 ease-in-out w-full">
+            <img src="{{tienda.img_prev.url}}" class="w-96 h-96 flex-shrink-0" alt="Imagen 1">
+            <img src="{{tienda.img_comp.url}}" class="w-96 h-96 flex-shrink-0" alt="Imagen 2">
         </div>
-      </div>
     </div>
+</div>
 
     <div
       class="flex flex-col mr-40 w-96 h-screen items-center justify-center border border-stone-300 space-y-5 pt-4 -mt-40"
@@ -57,6 +38,7 @@
       <button
         class="rounded-xl w-40 h-8 hover:bg-[#fdbc3b] transition duration-300 pb-1.5 text-xl hover:scale-110"
         id="abrir"
+        type="button"
       >
         comprar
       </button>
@@ -99,7 +81,6 @@
               />
 
               <button
-                onclick="actualizarDatos()"
                 type="submit"
                 class="flex bg-[#33b2d9] text-white p-2 px-4 rounded-full hover:scale-110 transition duration-300 w-20 mt-4"
               >
@@ -119,48 +100,27 @@
   </div>
 
   <script>
-    const imageCarousel =
-      document.getElementById('imageCarousel').firstElementChild
-    const prevButton = document.getElementById('prevButton')
-    const nextButton = document.getElementById('nextButton')
+    document.addEventListener('DOMContentLoaded', function () {
+      const carrusel = document.getElementById('imageCarousel')
+      const contenedorImagenes = carrusel.querySelector('.flex.items-center')
+      const imagenes = contenedorImagenes.querySelectorAll('img')
 
-    let currentIndex = 0
+      let currentIndex = 0
+      const intervalo = 30000
 
-    function updateImageCarousel() {
-      const width = imageCarousel.clientWidth
-      imageCarousel.style.transform = `translateX(-${currentIndex * width}px)`
-    }
+      function moverCarrusel() {
+        currentIndex = (currentIndex + 1) % imagenes.length
+        const desplazamiento = -currentIndex * 100
+        contenedorImagenes.style.transform = `translateX(${desplazamiento}%)`
+      }
 
-    prevButton.addEventListener('click', () => {
-      currentIndex =
-        currentIndex > 0 ? currentIndex - 1 : imageCarousel.children.length - 1
-      updateImageCarousel()
-    })
+      setInterval(moverCarrusel, intervalo)
 
-    nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % imageCarousel.children.length
-      updateImageCarousel()
-    })
-
-    window.addEventListener('resize', updateImageCarousel)
-
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % imageCarousel.children.length
-      updateImageCarousel()
-    }, 3000)
-  </script>
-
-  <script>
-    const abrir = document.querySelector('#abrir')
-    const modal = document.querySelector('#modal')
-    const cerrar = document.querySelector('#cerrar')
-
-    abrir.addEventListener('click', () => {
-      modal.showModal()
-    })
-
-    cerrar.addEventListener('click', () => {
-      modal.close()
+      window.addEventListener('resize', function () {
+        contenedorImagenes.style.transform = `translateX(-${
+          currentIndex * 100
+        }%)`
+      })
     })
   </script>
 
@@ -172,18 +132,24 @@
       const tamañoSelector = document.getElementById('tamaño_selector')
 
       abrir.addEventListener('click', (e) => {
-        e.preventDefault()
-
-        if (!tamañoSelector.value) {
-          alert('Debes seleccionar un tamaño antes de continuar')
-          return
+        // Validación más estricta
+        if (tamañoSelector.value === '' || tamañoSelector.value === '----') {
+          e.preventDefault()
+          alert('¡Debes seleccionar un tamaño válido antes de continuar!')
+          tamañoSelector.focus()
+          return false
         }
 
         const selectedOption =
           tamañoSelector.options[tamañoSelector.selectedIndex]
-        document.getElementById('tamañoF').value =
-          selectedOption.getAttribute('data-tamaño')
+        const tamañoValor =
+          selectedOption.getAttribute('data-tamaño') || selectedOption.value
+
+        document.getElementById('tamañoF').value = tamañoValor
+        console.log('Valor asignado al input hidden:', tamañoValor) // Para depuración
+
         modal.showModal()
+        return true
       })
 
       cerrar.addEventListener('click', () => {
