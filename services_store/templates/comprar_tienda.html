@@ -119,16 +119,6 @@
   </div>
 
   <script>
-    function actualizarDatos() {
-      var select = document.getElementById('tamaño_selector')
-      var selectedOption = select.options[select.selectedIndex]
-      var Tamaño = selectedOption.getAttribute('data-tamaño')
-
-      document.getElementById('tamañoF').value = Tamaño
-    }
-  </script>
-
-  <script>
     const imageCarousel =
       document.getElementById('imageCarousel').firstElementChild
     const prevButton = document.getElementById('prevButton')
@@ -154,11 +144,10 @@
 
     window.addEventListener('resize', updateImageCarousel)
 
-    // Cambio automático cada 3 segundos
     setInterval(() => {
       currentIndex = (currentIndex + 1) % imageCarousel.children.length
       updateImageCarousel()
-    }, 3000) // Cambia el valor (3000 ms) para ajustar el intervalo de tiempo
+    }, 3000)
   </script>
 
   <script>
@@ -176,11 +165,31 @@
   </script>
 
   <script>
-    document
-      .getElementById('tamaño_selector')
-      .addEventListener('change', function () {
-        document.getElementById('tamañoF').value = this.value
+    document.addEventListener('DOMContentLoaded', function () {
+      const abrir = document.getElementById('abrir')
+      const modal = document.getElementById('modal')
+      const cerrar = document.getElementById('cerrar')
+      const tamañoSelector = document.getElementById('tamaño_selector')
+
+      abrir.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        if (!tamañoSelector.value) {
+          alert('Debes seleccionar un tamaño antes de continuar')
+          return
+        }
+
+        const selectedOption =
+          tamañoSelector.options[tamañoSelector.selectedIndex]
+        document.getElementById('tamañoF').value =
+          selectedOption.getAttribute('data-tamaño')
+        modal.showModal()
       })
+
+      cerrar.addEventListener('click', () => {
+        modal.close()
+      })
+    })
   </script>
   {%endblock%}
 </body>
