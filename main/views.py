@@ -6,8 +6,8 @@ from random import shuffle
 
   
 def main(request): 
-  Servicios = servicios.objects.order_by('?')[:2]
-  tienda =  producto.objects.order_by('?')[:2]
+  Servicios = servicios.objects.order_by('?')[:4]
+  tienda =  producto.objects.order_by('?')[:4]
   
   image_dir_carrusel = os.path.join(settings.BASE_DIR, 'staticfiles', 'carrusel')
   images_carrusel = [f for f in os.listdir(image_dir_carrusel) if f.endswith(('webp'))]
