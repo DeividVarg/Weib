@@ -124,7 +124,7 @@
       const imagenes = contenedorImagenes.querySelectorAll('img')
 
       let currentIndex = 0
-      const intervalo = 1000
+      const intervalo = 20000
 
       function moverCarrusel() {
         currentIndex = (currentIndex + 1) % imagenes.length
@@ -150,7 +150,6 @@
       const tamañoSelector = document.getElementById('tamaño_selector')
 
       abrir.addEventListener('click', (e) => {
-        // Validación más estricta
         if (tamañoSelector.value === '' || tamañoSelector.value === '----') {
           e.preventDefault()
           alert('¡Debes seleccionar un tamaño válido antes de continuar!')
@@ -164,7 +163,6 @@
           selectedOption.getAttribute('data-tamaño') || selectedOption.value
 
         document.getElementById('tamañoF').value = tamañoValor
-        console.log('Valor asignado al input hidden:', tamañoValor) // Para depuración
 
         modal.showModal()
         return true
