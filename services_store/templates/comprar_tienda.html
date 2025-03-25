@@ -44,7 +44,6 @@
       <select
         name="tamañoSelector"
         id="tamaño_selector"
-        onchange="actualizarDatos()"
         class="rounded-xl hover:scale-110 transition duration-300"
         required
       >
@@ -125,7 +124,7 @@
       const imagenes = contenedorImagenes.querySelectorAll('img')
 
       let currentIndex = 0
-      const intervalo = 30000
+      const intervalo = 1000
 
       function moverCarrusel() {
         currentIndex = (currentIndex + 1) % imagenes.length
