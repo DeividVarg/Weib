@@ -6,117 +6,121 @@
 
 <body>
   {%block content%}
-
-  <div class="justify-between flex px-10 mt-10 min-h-screen">
-    <div class="flex justify-start">
-      <div class="flex items-center ml-28 -mt-20">
-        <div class="relative w-96 mx-auto h-96">
-          <div
-            id="imageCarousel"
-            class="flex overflow-hidden relative h-70 w-96 rounded-lg shadow-lg items-center"
-          >
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="justify-between flex px-10 mt-10 min-h-screen">
+      <div class="flex justify-start">
+        <div class="flex items-center ml-28 -mt-20">
+          <div class="relative w-96 mx-auto h-96">
             <div
-              class="flex items-center transition-transform duration-500 ease-in-out"
-              style="transform: translateX(0%)"
+              id="imageCarousel"
+              class="flex overflow-hidden relative h-70 w-96 rounded-lg shadow-lg items-center"
             >
-              <img
-                src="{{tienda.img_prev.url}}"
-                class="w-96 h-96 flex-shrink-0"
-                alt="Imagen 1"
-              />
-              <img
-                src="{{tienda.img_comp.url}}"
-                class="w-96 h-96 flex-shrink-0"
-                alt="Imagen 2"
-              />
+              <div
+                class="flex items-center transition-transform duration-500 ease-in-out"
+                style="transform: translateX(0%)"
+              >
+                <img
+                  src="{{tienda.img_prev.url}}"
+                  class="w-96 h-96 flex-shrink-0"
+                  alt="Imagen 1"
+                />
+                <img
+                  src="{{tienda.img_comp.url}}"
+                  class="w-96 h-96 flex-shrink-0"
+                  alt="Imagen 2"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div
-      class="flex flex-col mr-40 w-96 h-screen items-center justify-center border border-stone-300 space-y-5 pt-4 -mt-40"
-    >
-      <p class="text-lg">{{tienda.nombre}}</p>
-      <p>{{tienda.descripcion}}</p>
-
-      <select
-        name="tamañoSelector"
-        id="tamaño_selector"
-        class="rounded-xl hover:scale-110 transition duration-300"
-        required
+      <div
+        class="flex flex-col mr-40 w-96 h-screen items-center justify-center border border-stone-300 space-y-5 pt-4 -mt-40"
       >
-        {%for i in size%}
-        <option value="">----</option>
-        <option value="{{i.id}}" data-tamaño="{{i.tamaño}} ">{{i}}</option>
-        {%endfor%}
-      </select>
+        <p class="text-lg">{{tienda.nombre}}</p>
+        <p>{{tienda.descripcion}}</p>
 
-      <button
-        class="rounded-xl w-40 h-8 hover:bg-[#fdbc3b] transition duration-300 pb-1.5 text-xl hover:scale-110"
-        id="abrir"
-        type="button"
-      >
-        comprar
-      </button>
+        <select
+          name="tamañoSelector"
+          id="tamaño_selector"
+          class="rounded-xl hover:scale-110 transition duration-300"
+          required
+        >
+          {%for i in size%}
+          <option value="">----</option>
+          <option value="{{i.id}}" data-tamaño="{{i.tamaño}} ">{{i}}</option>
+          {%endfor%}
+        </select>
 
-      <div class="flex justify-center items-center">
-        <dialog id="modal" class="p-20 rounded-lg space-y-2">
-          <div>
-            <p>¿Desea proceder con la compra?</p>
-            <form method="post" class="flex flex-col space-y-2">
-              {% csrf_token %}
-              <input
-                type="hidden"
-                value="{{tienda.nombre}} "
-                id="producto"
-                name="producto"
-              />
-              <input type="hidden" value="" id="tamañoF" name="tamaño" />
-              <input
-                type="hidden"
-                value="{{user.id}}"
-                name="id_user"
-                id="id_user"
-              />
-              <select name="cantidad" id="cantidad">
-                <option value="">----</option>
-                <option value="1/2 caja">1/2 caja</option>
-                <option value="1 caja">1 caja</option>
-                <option value="2 cajas">2 cajas</option>
-                <option value="3 cajas">3 cajas</option>
-                <option value="4 cajas">4 cajas</option>
-                <option value="personalizado">personalizado</option>
-              </select>
+        <button
+          class="rounded-xl w-40 h-8 hover:bg-[#fdbc3b] transition duration-300 pb-1.5 text-xl hover:scale-110"
+          id="abrir"
+          type="button"
+        >
+          comprar
+        </button>
 
-              <input type="hidden" name="correo" value="{{user.email}}" />
-              <input type="hidden" name="telefono" value="{{user.telefono}}" />
-              <input
-                type="hidden"
-                name="name"
-                value="{{user.first_name}} {{user.last_name}}"
-              />
+        <div class="flex justify-center items-center">
+          <dialog id="modal" class="p-20 rounded-lg space-y-2">
+            <div>
+              <p>¿Desea proceder con la compra?</p>
+              <form method="post" class="flex flex-col space-y-2">
+                {% csrf_token %}
+                <input
+                  type="hidden"
+                  value="{{tienda.nombre}} "
+                  id="producto"
+                  name="producto"
+                />
+                <input type="hidden" value="" id="tamañoF" name="tamaño" />
+                <input
+                  type="hidden"
+                  value="{{user.id}}"
+                  name="id_user"
+                  id="id_user"
+                />
+                <select name="cantidad" id="cantidad">
+                  <option value="">----</option>
+                  <option value="1/2 caja">1/2 caja</option>
+                  <option value="1 caja">1 caja</option>
+                  <option value="2 cajas">2 cajas</option>
+                  <option value="3 cajas">3 cajas</option>
+                  <option value="4 cajas">4 cajas</option>
+                  <option value="personalizado">personalizado</option>
+                </select>
 
+                <input type="hidden" name="correo" value="{{user.email}}" />
+                <input
+                  type="hidden"
+                  name="telefono"
+                  value="{{user.telefono}}"
+                />
+                <input
+                  type="hidden"
+                  name="name"
+                  value="{{user.first_name}} {{user.last_name}}"
+                />
+
+                <button
+                  type="submit"
+                  class="flex bg-[#33b2d9] text-white p-2 px-4 rounded-full hover:scale-110 transition duration-300 w-20 mt-4"
+                >
+                  enviar
+                </button>
+              </form>
               <button
-                type="submit"
-                class="flex bg-[#33b2d9] text-white p-2 px-4 rounded-full hover:scale-110 transition duration-300 w-20 mt-4"
+                id="cerrar"
+                class="bg-[#fdbc3b] p-2 px-5 rounded-full hover:scale-110 transition duration-300 text-white"
               >
-                enviar
+                cerrar
               </button>
-            </form>
-            <button
-              id="cerrar"
-              class="bg-[#fdbc3b] p-2 px-5 rounded-full hover:scale-110 transition duration-300 text-white"
-            >
-              cerrar
-            </button>
-          </div>
-        </dialog>
+            </div>
+          </dialog>
+        </div>
       </div>
     </div>
   </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const carrusel = document.getElementById('imageCarousel')
