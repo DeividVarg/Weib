@@ -2,48 +2,50 @@
 
 <div class="">
   {%block content%}
-  <div class="grid grid-col-2 gap-6">
-    <!-- tarjetas -->
-    {%for i in tienda%}
-    <div
-      class="flex flex-col items-center space-y-2 border border-stone-400 shadow-sm my-4 justify-center w-80 h-80"
-    >
-      <h2 class="pt-4 text-2xl">{{i.nombre}}</h2>
+  <div class="">
+    <div class="grid grid-cols-2 mt-16 gap-3 ml-20">
+      <!-- tarjetas -->
+      {%for i in tienda%}
+      <div
+        class="flex flex-col items-center w-80 h-80 space-y-2 border border-stone-400 shadow-sm my-4"
+      >
+        <h2 class="pt-4 text-2xl">{{i.nombre}}</h2>
 
-      <p>{{i.descripccion}}</p>
+        <p>{{i.descripccion}}</p>
 
-      <div class="flex items-center space-x-2">
-        <img
-          src="{{i.img_prev.url}}"
-          alt=""
-          class="w-32 h-32 border border-gray-400"
-        />
-        <img
-          src="{{i.img_comp.url}}"
-          alt=""
-          class="w-32 h-32 border border-gray-400"
-        />
-      </div>
-      <div class="space-x-20">
-        <button
-          class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
-        >
-          <a
-            href="{%url 'EditT' i.id%}
-          "
-            >editar</a
+        <div class="flex items-center space-x-2">
+          <img
+            src="{{i.img_prev.url}}"
+            alt=""
+            class="w-32 h-32 border border-gray-400"
+          />
+          <img
+            src="{{i.img_comp.url}}"
+            alt=""
+            class="w-32 h-32 border border-gray-400"
+          />
+        </div>
+        <div class="space-x-20">
+          <button
+            class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
           >
-        </button>
+            <a
+              href="{%url 'EditT' i.id%}
+          "
+              >editar</a
+            >
+          </button>
 
-        <button
-          class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
-        >
-          <a href="{%url 'DeleteT' i.id%}">eliminar</a>
-        </button>
+          <button
+            class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
+          >
+            <a href="{%url 'DeleteT' i.id%}">eliminar</a>
+          </button>
+        </div>
       </div>
-    </div>
 
-    {%endfor%}
+      {%endfor%}
+    </div>
   </div>
   {%endblock%}
 </div>
