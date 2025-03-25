@@ -173,7 +173,6 @@ EMAIL_HOST_PASSWORD = 'ajdr dqvr asxc wqqx'
 
 ALLOWED_HOSTS = ['localhost', 'weib-production.up.railway.app','www.weib-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = [
-  'localhost',
     'https://weib-production.up.railway.app',
 ]
 
