@@ -7,14 +7,33 @@
 <body>
   {%block content%}
 
-  <div class="relative w-96 mx-auto h-96">
-    <div id="imageCarousel" class="flex overflow-hidden relative h-70 w-96 rounded-lg shadow-lg">
-        <div class="flex items-center transition-transform duration-1000 ease-in-out w-full">
-            <img src="{{tienda.img_prev.url}}" class="w-96 h-96 flex-shrink-0" alt="Imagen 1">
-            <img src="{{tienda.img_comp.url}}" class="w-96 h-96 flex-shrink-0" alt="Imagen 2">
+  <div class="justify-between flex px-10 mt-10 min-h-screen">
+    <div class="flex justify-start">
+      <div class="flex items-center ml-28 -mt-20">
+        <div class="relative w-96 mx-auto h-96">
+          <div
+            id="imageCarousel"
+            class="flex overflow-hidden relative h-70 w-96 rounded-lg shadow-lg items-center"
+          >
+            <div
+              class="flex items-center transition-transform duration-500 ease-in-out"
+              style="transform: translateX(0%)"
+            >
+              <img
+                src="{{tienda.img_prev.url}}"
+                class="w-96 h-96 flex-shrink-0"
+                alt="Imagen 1"
+              />
+              <img
+                src="{{tienda.img_comp.url}}"
+                class="w-96 h-96 flex-shrink-0"
+                alt="Imagen 2"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
     <div
       class="flex flex-col mr-40 w-96 h-screen items-center justify-center border border-stone-300 space-y-5 pt-4 -mt-40"
