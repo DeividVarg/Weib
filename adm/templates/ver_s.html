@@ -19,11 +19,14 @@
             alt=""
             class="w-32 h-32 border border-gray-400"
           />
-          <img
-            src="{{i.img_comp.url}}"
-            alt=""
-            class="w-32 h-32 border border-gray-400"
-          />
+          {% if i.img_comp %}
+                <img
+                  src="{{i.img_comp.url}}"
+                  class="w-96 h-96 flex-shrink-0"
+                  alt="Imagen 2"
+                />
+              </div>
+          {% endif %}
         </div>
         <div class="space-x-20">
           <button

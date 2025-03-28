@@ -16,7 +16,6 @@ def Servicios(request):
 def compra_s(request,id):
   service = servicios.objects.get(pk=id)
   user = request.POST.get('id_user')
- 
   
   if request.method =="GET":
       return render(request, 'comprar_services.html', {'service':service})
@@ -25,8 +24,10 @@ def compra_s(request,id):
     user_email = request.POST.get('correo')
     user_phone = request.POST.get('telefono')
     name = request.POST.get('name')
+    
     compra = factura_servicios.objects.create(solicitante = user_instace, fechaDeCita= request.POST['fecha-de-cita'], telefono = request.POST['telefono'], servicio = request.POST['servicio'], direccion= request.POST['direccion'])
     compra.save()
+    
     messages.success(request, 'servicio solicitado exitosamente')
     
     
@@ -75,6 +76,7 @@ def compra_t(request,id):
     user_instace = User.objects.get(pk = user)
     user_email = request.POST.get('correo')
     user_phone = request.POST.get('telefono')
+    cantidad = request.POST.get('cantidad')
     name = request.POST.get('name')
     compra = factura_tienda.objects.create(solicitante = user_instace, producto = request.POST['producto'], tamaño = request.POST['cantidad'],)
     compra.save()
@@ -82,7 +84,9 @@ def compra_t(request,id):
     
     
     subject = 'una solicitud de servicio ha sido realizada'
-    message = f'''el usuario {name} ha realizado una peticion del servicio {request.POST['producto']}. 
+    message = f'''el usuario {name} ha realizado una peticion del producto {request.POST['producto']}. 
+    
+    cantidad : {cantidad}
     
     Correo del cliente : {user_email}
     

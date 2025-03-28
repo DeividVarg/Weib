@@ -23,12 +23,14 @@
                   class="w-96 h-96 flex-shrink-0"
                   alt="Imagen 1"
                 />
+                {% if tienda.img_comp %}
                 <img
                   src="{{tienda.img_comp.url}}"
                   class="w-96 h-96 flex-shrink-0"
                   alt="Imagen 2"
                 />
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -86,7 +88,7 @@
                   <option value="2 cajas">2 cajas</option>
                   <option value="3 cajas">3 cajas</option>
                   <option value="4 cajas">4 cajas</option>
-                  <option value="personalizado">personalizado</option>
+                  <option value="al mayor (a partir de 5 cajas)">personalizado</option>
                 </select>
 
                 <input type="hidden" name="correo" value="{{user.email}}" />
