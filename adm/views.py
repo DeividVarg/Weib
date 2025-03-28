@@ -26,6 +26,7 @@ def main_sm(request):
 def añadir_servicios(request): 
   if request.method == "POST":
     form = services(request.POST, files=request.FILES)
+    
     if form.is_valid():
         servicios = form.save(commit=False)
         
@@ -44,8 +45,9 @@ def añadir_servicios(request):
         
         servicios.img_prev = img_file
 
-        if request.FILES['img_comp']:
-          img_comp = request.FILES['img_comp']
+        img_comp = request.FILES['img_comp']
+        print(img_comp)
+        if img_comp:
           img_comp_name_base = os.path.splitext(img_comp.name)[0]
           
           img2 = Image.open(img_comp)
