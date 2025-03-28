@@ -30,37 +30,39 @@ def añadir_servicios(request):
         servicios = form.save(commit=False)
         
         img_prev = request.FILES['img_prev']
-        img_comp = request.FILES['img_comp']
-        
         img_prev_name_base = os.path.splitext(img_prev.name)[0]
-        img_comp_name_base = os.path.splitext(img_comp.name)[0]
         
         img = Image.open(img_prev) 
-        img2 = Image.open(img_comp)
-        
         img = ImageOps.exif_transpose(img)
-        img2 = ImageOps.exif_transpose(img2)
-        
         img = img.resize((500, 500))
-        img2 = img2.resize((500, 500))
         
         img_io = BytesIO()
-        img_io2 = BytesIO()
-        
         img.save(img_io, format='WEBP')
-        img2.save(img_io2, format='WEBP')
         
         img_io.seek(0)
-        img_io2.seek(0)
-        
         img_file = InMemoryUploadedFile(img_io, 'ImageField', f'{img_prev_name_base}.webp', 'image/webp',img_io.tell(), None)
-        img_file2 = InMemoryUploadedFile(img_io2, 'ImageField', f'{img_comp_name_base}.webp', 'image/webp',img_io.tell(), None)
         
         servicios.img_prev = img_file
-        servicios.img_comp = img_file2
+
+        if request.FILES['img_comp']:
+          img_comp = request.FILES['img_comp']
+          img_comp_name_base = os.path.splitext(img_comp.name)[0]
+          
+          img2 = Image.open(img_comp)
+          img2 = ImageOps.exif_transpose(img2)
+          img2 = img2.resize((500, 500))
+          
+          img_io2 = BytesIO()
+          img2.save(img_io2, format='WEBP')
+          img_io2.seek(0)
+          
+          img_file2 = InMemoryUploadedFile(img_io2, 'ImageField', f'{img_comp_name_base}.webp', 'image/webp',img_io.tell(), None)
+          
+          servicios.img_comp = img_file2
         
-        messages.success(request, 'servicio creado exitosamente ')
+        
         servicios.save()
+        messages.success(request, 'servicio creado exitosamente ')
         
         return redirect('Sm_main')
   else:
@@ -95,8 +97,10 @@ def añadir_productos(request):
           img2 = ImageOps.exif_transpose(img2)
           img2 = img2.resize((500, 500))
           img_io2 = BytesIO()
+          
           img2.save(img_io2, format='WEBP')
           img_io2.seek(0)
+          
           img_file2 = InMemoryUploadedFile(img_io2, 'ImageField', f'{img_comp_name_base}.webp', 'image/webp',img_io.tell(), None)
           producto.img_comp = img_file2
           
