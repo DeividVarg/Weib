@@ -46,7 +46,7 @@ def añadir_servicios(request):
         servicios.img_prev = img_file
 
         img_comp = request.FILES['img_comp']
-        print(img_comp)
+        print('imagen complementaria:', img_comp)
         if img_comp:
           img_comp_name_base = os.path.splitext(img_comp.name)[0]
           
