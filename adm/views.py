@@ -90,7 +90,7 @@ def añadir_productos(request):
         img_file = InMemoryUploadedFile(img_io, 'ImageField', f'{img_prev_name_base}.webp', 'image/webp',img_io.tell(), None)
         producto.img_prev = img_file
         
-        if request.FILES['img_comp']:
+        if request.FILES.get('img_comp'):
           img_comp = request.FILES['img_comp']
           img_comp_name_base = os.path.splitext(img_comp.name)[0]
           
