@@ -116,12 +116,13 @@
     </div>
   </section>
 
-  <a
-    href="{%url 'servicios'%}"
-    class="my-2 justify-center items-center border-2 border-[#4baa38] text-white bg-white rounded-md px-4 py-2 hover:bg-[#4baa38] hover:scale-105 transition duration-300 flex mx-auto text-xl w-96"
+  <button
+    class="my-2 justify-center items-center border-2 border-[#4baa38] bg-white rounded-md px-4 py-2 active:bg-[#4baa38] hover:scale-105 transition duration-200 flex mx-auto text-lg w-96"
   >
-    Click aqui para ver todos nuestros servicios</a
-  >
+    <a href="{%url 'servicios'%}">
+      Click aqui para ver todos nuestros servicios</a
+    >
+  </button>
 
   <!-- Tienda -->
   <section
@@ -199,12 +200,13 @@
       </div>
     </div>
   </section>
-  <a
-    href="{%url 'tienda'%}"
-    class="my-2 justify-center items-center border-2 border-[#4baa38] text-white bg-white rounded-md px-4 py-2 hover:bg-[#4baa38] hover:scale-105 transition duration-300 flex mx-auto text-xl w-96"
+
+  <button
+    class="my-2 justify-center items-center border-2 border-[#4baa38] bg-white rounded-md px-4 py-2 active:bg-[#4baa38] hover:scale-105 transition duration-200 flex mx-auto text-lg w-96"
   >
-    >Click aqui para ver todos nuestros productos</a
-  >
+    <a href="{%url 'tienda'%}"> Click aqui para ver todos nuestros productos</a>
+  </button>
+
   <aside class="flex justify-center mb-10 bg-white">
     <img
       src="{%static 'img/logo.webp'%} "
