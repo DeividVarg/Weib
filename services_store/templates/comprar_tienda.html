@@ -48,8 +48,8 @@
           class="rounded-xl hover:scale-110 transition duration-300"
           required
         >
+        <option value="">----</option>
           {%for i in size%}
-          <option value="">----</option>
           <option value="{{i.id}}" data-tamaño="{{i.tamaño}} ">{{i}}</option>
           {%endfor%}
         </select>
@@ -88,7 +88,7 @@
                   <option value="2 cajas">2 cajas</option>
                   <option value="3 cajas">3 cajas</option>
                   <option value="4 cajas">4 cajas</option>
-                  <option value="al mayor (a partir de 5 cajas)">personalizado</option>
+                  <option value="5 cajas o mas">Al mayor a parir de 5 cajas o mas </option>
                 </select>
 
                 <input type="hidden" name="correo" value="{{user.email}}" />
