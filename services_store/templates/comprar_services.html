@@ -68,10 +68,15 @@
             <form method="post" class="flex flex-col">
               {% csrf_token %}
               <label for="">fecha para cita</label>
-              <input type="date" name="fecha-de-cita" id="fecha-de-cita" />
+              <input
+                type="date"
+                name="fecha-de-cita"
+                id="fecha-de-cita"
+                required
+              />
 
               <label for="">Ingrese direccion </label>
-              <input type="text" name="direccion" id="direccion" />
+              <input type="text" name="direccion" id="direccion" required />
 
               <input type="hidden" name="correo" value="{{user.email}}" />
               <input type="hidden" name="telefono" value="{{user.telefono}}" />
@@ -144,11 +149,10 @@
 
     window.addEventListener('resize', updateImageCarousel)
 
-    // Cambio automático cada 3 segundos
     setInterval(() => {
       currentIndex = (currentIndex + 1) % imageCarousel.children.length
       updateImageCarousel()
-    }, 3000) // Cambia el valor (3000 ms) para ajustar el intervalo de tiempo
+    }, 3000)
   </script>
 
   <script>
@@ -163,6 +167,22 @@
     cerrar.addEventListener('click', () => {
       modal.close()
     })
+  </script>
+
+  <script>
+    function validarFormulario() {
+      const fecha = document.getElementById('fecha-de-cita').value
+      const direccion = document.getElementById('direccion').value
+
+      if (!fecha || !direccion) {
+        alert(
+          'Por favor, complete todos los campos antes de enviar el formulario.'
+        )
+        return false
+      }
+
+      return true
+    }
   </script>
 
   {%endblock%}
