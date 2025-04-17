@@ -1,52 +1,52 @@
-{%extends 'main_ms.html' %} {%block tittle%} productos {%endblock%}
+{%extends 'main_ms.html' %} {%block tittle%} servicios {%endblock%}
 
 <div class="">
   {%block content%}
-  <div class="w-full h-full">
-    <div class="flex flex-col items-center justify-center px-2 w-full h-full">
-      <!-- tarjetas -->
-      {%for i in tienda%}
+  <div class="w-full h-full p-4">
+    <!-- Contenedor principal con padding uniforme -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Cambiado a grid responsive con gap para espaciado uniforme -->
+
+      {%for i in servicio%}
       <div
-        class="flex flex-col items-center w-96 h-80 space-y-2 shadow-sm my-4 mx-10"
+        class="flex flex-col items-center h-auto shadow-md rounded-lg p-4 transition-all hover:shadow-lg"
       >
-        <h2 class="pt-4 text-2xl">{{i.nombre}}</h2>
+        <!-- Tarjeta responsive sin ancho fijo -->
+        <h2 class="pt-2 text-2xl font-semibold">{{i.nombre}}</h2>
 
-        <p>{{i.descripccion}}</p>
+        <p class="my-3 text-center">{{i.descripccion}}</p>
 
-        <div class="flex items-center space-x-2">
+        <div class="flex flex-wrap justify-center gap-4 my-3">
+          <!-- Contenedor de imágenes con gap para espaciado -->
           <img
             src="{{i.img_prev.url}}"
-            alt=""
-            class="w-32 h-32 border border-gray-400"
+            alt="Imagen previa"
+            class="w-32 h-32 object-cover border border-gray-400 rounded"
           />
           {% if i.img_comp %}
-                <img
-                  src="{{i.img_comp.url}}"
-                  class="w-32 h-32 flex-shrink-0"
-                  alt="Imagen 2"
-                />
-              </div>
+          <img
+            src="{{i.img_comp.url}}"
+            class="w-32 h-32 object-cover border border-gray-400 rounded"
+            alt="Imagen complementaria"
+          />
           {% endif %}
         </div>
-        <div class="space-x-20">
+
+        <div class="flex justify-center gap-4 mt-4">
+          <!-- Botones con espaciado uniforme -->
           <button
-            class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
+            class="rounded-md px-4 py-2 bg-gray-100 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
           >
-            <a
-              href="{%url 'EditT' i.id%}
-          "
-              >editar</a
-            >
+            <a href="{%url 'EditS' i.id%}">Editar</a>
           </button>
 
           <button
-            class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
+            class="rounded-md px-4 py-2 bg-gray-100 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
           >
-            <a href="{%url 'DeleteT' i.id%}">eliminar</a>
+            <a href="{%url 'DeleteS' i.id%}">Eliminar</a>
           </button>
         </div>
       </div>
-
       {%endfor%}
     </div>
   </div>
