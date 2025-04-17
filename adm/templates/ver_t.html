@@ -3,13 +3,14 @@
 <div class="">
   {%block content%}
   <div class="w-full h-full">
-    <!-- Contenedor principal con ancho máximo para controlar el layout -->
+
     <div class="max-w-7xl mx-auto">
-      <!-- Grid con ancho completo y gap en lugar de márgenes -->
+
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
-        {%for i in servicio%}
-        <!-- Tarjeta con ancho automático en lugar de fijo -->
-        <div class="flex flex-col items-center w-full shadow-sm my-4">
+        {%for i in tienda %}
+
+
+        
           <h2 class="pt-4 text-2xl">{{i.nombre}}</h2>
 
           <p>{{i.descripccion}}</p>
