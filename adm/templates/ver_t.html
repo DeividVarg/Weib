@@ -1,4 +1,59 @@
-{%extends 'main_ms.html' %} {%block tittle%} Productos {%endblock%}
+{%extends 'main_ms.html' %} {%block tittle%} productos {%endblock%}
+
+<div class="">
+  {%block content%}
+  <div class="w-full h-full p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- tarjetas -->
+      {%for i in tienda%}
+      <div
+        class="flex flex-col items-center h-auto shadow-md rounded-lg p-4 transition-all hover:shadow-lg"
+      >
+        <h2 class="pt-4 text-2xl">{{i.nombre}}</h2>
+
+        <p>{{i.descripccion}}</p>
+
+        <div class="flex flex-wrap justify-center gap-4 my-3">
+          <img
+            src="{{i.img_prev.url}}"
+            alt=""
+            class="w-32 h-32 border border-gray-400"
+          />
+          {% if i.img_comp %}
+                <img
+                  src="{{i.img_comp.url}}"
+                  class="w-32 h-32 flex-shrink-0"
+                  alt="Imagen 2"
+                />
+              </div>
+          {% endif %}
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 my-3">
+          <button
+            class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
+          >
+            <a
+              href="{%url 'EditT' i.id%}
+          "
+              >editar</a
+            >
+          </button>
+
+          <button
+            class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
+          >
+            <a href="{%url 'DeleteT' i.id%}">eliminar</a>
+          </button>
+        </div>
+      </div>
+
+      {%endfor%}
+    </div>
+  </div>
+  {%endblock%}
+</div>
+
+{%extends 'main_ms.html' %} {%block tittle%} servicios {%endblock%}
 
 <div class="">
   {%block content%}
@@ -31,13 +86,13 @@
           <button
             class="rounded-md px-4 py-2 bg-gray-100 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
           >
-            <a href="{%url 'EditT' i.id%}">Editar</a>
+            <a href="{%url 'EditS' i.id%}">Editar</a>
           </button>
 
           <button
             class="rounded-md px-4 py-2 bg-gray-100 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
           >
-            <a href="{%url 'DeleteT' i.id%}">Eliminar</a>
+            <a href="{%url 'DeleteS' i.id%}">Eliminar</a>
           </button>
         </div>
       </div>
