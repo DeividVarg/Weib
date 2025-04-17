@@ -148,7 +148,9 @@
         </div>
       </div>
     </div>
-    {% include 'mensajes/mensajes.html' %} {%block content%} {%endblock%}
+    <div class="h-full w-full">
+      {% include 'mensajes/mensajes.html' %} {%block content%} {%endblock%}
+    </div>
   </div>
   <script>
     function toggleDropdown() {
