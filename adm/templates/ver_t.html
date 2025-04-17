@@ -3,7 +3,7 @@
 <div class="">
   {%block content%}
   <div class="w-full h-full">
-    <div lass="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div lass="grid grid-cols-2 gap-6">
       <!-- tarjetas -->
       {%for i in tienda%}
       <div
@@ -13,7 +13,7 @@
 
         <p>{{i.descripccion}}</p>
 
-        <div class="flex items-center space-x-2">
+        <div class="flex flex-wrap justify-center gap-4 my-3">
           <img
             src="{{i.img_prev.url}}"
             alt=""
@@ -28,7 +28,7 @@
               </div>
           {% endif %}
         </div>
-        <div class="space-x-20">
+        <div class="flex justify-center gap-4 mt-4">
           <button
             class="rounded h-10 w-20 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
           >
