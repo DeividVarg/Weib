@@ -3,21 +3,16 @@
 <div class="">
   {%block content%}
   <div class="w-full h-full p-4">
-    <!-- Contenedor principal con padding uniforme -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Cambiado a grid responsive con gap para espaciado uniforme -->
-
-      {%for i in servicio%}
+      {%for i in tienda}
       <div
         class="flex flex-col items-center h-auto shadow-md rounded-lg p-4 transition-all hover:shadow-lg"
       >
-        <!-- Tarjeta responsive sin ancho fijo -->
         <h2 class="pt-2 text-2xl font-semibold">{{i.nombre}}</h2>
 
         <p class="my-3 text-center">{{i.descripccion}}</p>
 
         <div class="flex flex-wrap justify-center gap-4 my-3">
-          <!-- Contenedor de imágenes con gap para espaciado -->
           <img
             src="{{i.img_prev.url}}"
             alt="Imagen previa"
@@ -33,7 +28,6 @@
         </div>
 
         <div class="flex justify-center gap-4 mt-4">
-          <!-- Botones con espaciado uniforme -->
           <button
             class="rounded-md px-4 py-2 bg-gray-100 duration-200 text-lg hover:bg-stone-300 hover:scale-105"
           >
