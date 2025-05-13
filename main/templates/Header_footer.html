@@ -42,7 +42,7 @@
       <div id="dropdownbutton" class="flex">
         <p class="mr-3 text-lg">{{request.user.username}}</p>
         <div
-          class="ease-in rounded-full relative duration-300 hover:scale-110 hover:bg-[#0097b2] hover:rotate-3 mr-4 h-8 w-8"
+          class="ease-in rounded-full relative duration-300 hover:scale-110 hover:bg-slate-300 hover:rotate-3 mr-4 h-8 w-8"
           onclick="toggleDropdown()"
           id="dropdownbutton"
         >
@@ -67,24 +67,24 @@
           >
             <a
               href="{%url 'logout'%}"
-              class="rounded-md duration-200 hover:bg-blue-900 hover:scale-105"
+              class="rounded-md duration-200 hover:bg-slate-300 hover:scale-105"
               >Cerrar Sesion</a
             >
             {%if request.user.is_admin or request.user.staff%}
             <a
               href="{%url 'Sm_main'%}"
-              class="rounded-md duration-200 hover:bg-blue-900 hover:scale-105"
+              class="rounded-md duration-200 hover:bg-slate-300 hover:scale-105"
               >Admin</a
             >
 
-            <a href="{%url 'verUN' user.id%}" class="rounded-md duration-200 hover:bg-blue-900 hover:scale-105">Ver Perfil</a>
+            <a href="{%url 'verUN' user.id%}" class="rounded-md duration-200 hover:bg-slate-300 hover:scale-105">Ver Perfil</a>
             {%else%}
 
-            <a href="{%url 'verUN' user.id%}" class="rounded-md duration-200 hover:bg-blue-900 hover:scale-105">Ver Perfil</a>
+            <a href="{%url 'verUN' user.id%}" class="rounded-md duration-200 hover:bg-slate-300 hover:scale-105">Ver Perfil</a>
 
-            <a href="{%url 'historial_comp_servicios' user.id%}" class="rounded-md duration-200 hover:bg-blue-900 hover:scale-105 ">Servicios solicitados</a>
+            <a href="{%url 'historial_comp_servicios' user.id%}" class="rounded-md duration-200 hover:bg-slate-300 hover:scale-105 ">Servicios solicitados</a>
 
-            <a href="{%url 'historial_compra' user.id%}" class="rounded-md duration-200 hover:bg-blue-900 hover:scale-105">Historial de compras</a>
+            <a href="{%url 'historial_compra' user.id%}" class="rounded-md duration-200 hover:bg-slate-300 hover:scale-105">Historial de compras</a>
             {%endif%}
           </div>
         </div>
