@@ -10,14 +10,14 @@
     {%for i in tienda%}
 
     <div
-      class="flex flex-col justify-center items-center content-center w-3/4 h-96 space-y-2 border border-stone-400 shadow-sm my-4 mx-4 pb-2 duration-200 hover:scale-105 rounded"
+      class="flex flex-col justify-center items-center content-center w-3/4 h-96 space-y-2 shadow-lg my-4 mx-4 pb-2 duration-200 hover:scale-105 rounded"
     >
       <h2
         class="flex w-full justify-center pt-4 text-2xl border-b border-stone-400 pb-1"
       >
         {{i.nombre}}
       </h2>
-      
+
       <div class="flex flex-col space-y-4 place-content-center">
         <img
           src="{{i.img_prev.url}}"
@@ -27,7 +27,7 @@
 
         <a
           href="{%url 'tiendaC' i.id%}"
-          class="flex justify-center text-xl pb-1 duration-300 hover:bg-[#8dff6b] hover:scale-110 rounded-md w-80 items-center"
+          class="flex justify-center text-xl pb-1 duration-300 hover:bg-[#4baa38]hover:scale-110 rounded-md w-80 items-center hover:text-white"
           >comprar</a
         >
       </div>
