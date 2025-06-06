@@ -171,8 +171,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'Weibstore2024@gmail.com'
 EMAIL_HOST_PASSWORD = 'ajdr dqvr asxc wqqx'
 
-ALLOWED_HOSTS = ['localhost', 'weib-production.up.railway.app','www.weib-production.up.railway.app']
+ALLOWED_HOSTS = ['localhost', 'weib-production.up.railway.app','www.weib-production.up.railway.app', 'weibstore.com', 'www.weibstore.com']
 CSRF_TRUSTED_ORIGINS = [
     'https://weib-production.up.railway.app',
+    'weibstore.com', 'www.weibstore.com'
 ]
 
